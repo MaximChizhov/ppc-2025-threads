@@ -122,8 +122,6 @@
 //   }
 // }
 
-
-
 namespace {
 void RunTests(int div, int dimm, std::vector<double> &limits, std::function<double(const std::vector<double> &)> f,
               double expected_result) {
