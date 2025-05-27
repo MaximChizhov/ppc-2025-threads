@@ -144,7 +144,6 @@ void RunTests(int div, int dimm, std::vector<double> &limits, std::function<doub
     task_data_mpi->outputs_count.emplace_back(res.size() * sizeof(double));
   }
 
-
   auto test_task_mpi = std::make_shared<chizhov_m_trapezoid_method_all::TestTaskMPI>(task_data_mpi);
   test_task_mpi->SetFunc(f);
 
