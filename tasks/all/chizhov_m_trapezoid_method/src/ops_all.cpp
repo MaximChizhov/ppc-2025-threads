@@ -126,8 +126,7 @@ bool chizhov_m_trapezoid_method_all::TestTaskMPI::ValidationImpl() {
       valid = false;
     }
     auto* limit_ptr = reinterpret_cast<double*>(task_data->inputs[2]);
-    int lim_int = static_cast<int>(task_data->inputs_count[2]);
-    for (int i = 0; i < lim_int; i += 2) {
+    for (int i = 0; i < static_cast<int>(task_data->inputs_count[2]); i += 2) {
       if (limit_ptr[i] >= limit_ptr[i + 1]) {
         valid = false;
       }
