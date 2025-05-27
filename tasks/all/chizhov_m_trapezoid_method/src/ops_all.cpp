@@ -107,7 +107,10 @@ bool chizhov_m_trapezoid_method_all::TestTaskMPI::PreProcessingImpl() {
       upper_limits_.push_back(limit_ptr[i + 1]);
     }
   }
-
+  boost::mpi::broadcast(world_, div_, 0);
+  boost::mpi::broadcast(world_, dim_, 0);
+  boost::mpi::broadcast(world_, lower_limits_, 0);
+  boost::mpi::broadcast(world_, upper_limits_, 0);
   return true;
 }
 
@@ -138,14 +141,6 @@ bool chizhov_m_trapezoid_method_all::TestTaskMPI::ValidationImpl() {
 void chizhov_m_trapezoid_method_all::TestTaskMPI::SetFunc(Function f) { f_ = std::move(f); };
 
 bool chizhov_m_trapezoid_method_all::TestTaskMPI::RunImpl() {
-  boost::mpi::broadcast(world_, div_, 0);
-  boost::mpi::broadcast(world_, dim_, 0);
-  if (world_.rank() != 0) {
-    lower_limits_.resize(dim_);
-    upper_limits_.resize(dim_);
-  }
-  boost::mpi::broadcast(world_, lower_limits_, 0);
-  boost::mpi::broadcast(world_, upper_limits_, 0);
   res_ = TrapezoidMethod(f_, div_, dim_, lower_limits_, upper_limits_, world_);
   return true;
 }
