@@ -154,7 +154,7 @@ void RunTests(int div, int dimm, std::vector<double> &limits, std::function<doub
   if (world.rank() == 0) {
     ASSERT_NEAR(res[0], expected_result, 0.1);
   }
-  
+
   ASSERT_TRUE(test_task_mpi.ValidationImpl());
   test_task_mpi.PreProcessingImpl();
   test_task_mpi.RunImpl();
