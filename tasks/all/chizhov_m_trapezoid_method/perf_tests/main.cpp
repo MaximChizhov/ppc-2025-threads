@@ -40,8 +40,8 @@ TEST(chizhov_m_trapezoid_method_all, test_pipeline_run) {
     task_data_mpi->outputs_count.emplace_back(res.size() * sizeof(double));
   }
 
-  chizhov_m_trapezoid_method_all::TestTaskMPI test_task_mpi(task_data_mpi);
-  test_task_mpi.SetFunc(std::move(f));
+  auto test_task_mpi = std::make_shared<chizhov_m_trapezoid_method_all::TestTaskMPI>(task_data_mpi);
+  test_task_mpi->SetFunc(f);
 
   // Create Perf attributes
   auto perf_attr = std::make_shared<ppc::core::PerfAttr>();
