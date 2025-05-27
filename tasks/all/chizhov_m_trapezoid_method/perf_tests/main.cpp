@@ -157,7 +157,7 @@ void RunTests(int div, int dimm, std::vector<double> &limits, std::function<doub
     ASSERT_NEAR(res[0], expected_result, 0.1);
   }
 }
-}
+}  // namespace
 
 TEST(chizhov_m_trapezoid_method_all, one_variable_squared) {
   int div = 200;
