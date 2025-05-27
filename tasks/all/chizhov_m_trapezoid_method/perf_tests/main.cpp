@@ -67,7 +67,7 @@ TEST(chizhov_m_trapezoid_method_all, test_pipeline_run) {
   // auto perf_analyzer = std::make_shared<ppc::core::Perf>(test_task_mpi);
   // perf_analyzer->PipelineRun(perf_attr, perf_results);
   if (world.rank() == 0) {
-    //ppc::core::Perf::PrintPerfStatistic(perf_results);
+    // ppc::core::Perf::PrintPerfStatistic(perf_results);
     ASSERT_NEAR(-1405.6, res[0], 0.3);
   }
 }
