@@ -157,7 +157,18 @@ void RunTests(int div, int dimm, std::vector<double> &limits, std::function<doub
 }
 }  // namespace
 
-TEST(chizhov_m_trapezoid_method_all, one_variable_squared) {
+TEST(chizhov_m_trapezoid_method_all, test_task_run) {
+  int div = 200;
+  int dim = 3;
+  std::vector<double> limits = {0.0, 1000.0, 0.0, 1000.0, 0.0, 1000.0};
+
+  auto f = [](const std::vector<double> &f_val) {
+    return std::sin((f_val[0] * f_val[0]) + (f_val[1] * f_val[1]) + (f_val[2] * f_val[2]));
+  };
+  RunTests(div, dim, limits, f, -1405.6);
+}
+
+TEST(chizhov_m_trapezoid_method_all, test_pipeline_run) {
   int div = 200;
   int dim = 3;
   std::vector<double> limits = {0.0, 1000.0, 0.0, 1000.0, 0.0, 1000.0};
